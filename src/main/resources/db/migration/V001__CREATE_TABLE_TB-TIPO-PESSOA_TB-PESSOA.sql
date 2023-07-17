@@ -1,6 +1,7 @@
 create table if not exists tb_tipo_pessoa (
 	codigo bigserial not null,
 	descricao varchar(50) not null unique,
+	sigla varchar(5) not null unique,
 	constraint pk_tipo_pessoa primary key (codigo)
 );
 
