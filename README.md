@@ -20,3 +20,6 @@
 
 > GERFIN17072023191035
 >> Feature: Implementar Modelagem de Dados Funcionalidade Gerenciador de Transações Financeiras (GERTRAFIN)
+
+> GERFIN17072023192747
+>> Feature: Implementar endpoint das classes de Domínio

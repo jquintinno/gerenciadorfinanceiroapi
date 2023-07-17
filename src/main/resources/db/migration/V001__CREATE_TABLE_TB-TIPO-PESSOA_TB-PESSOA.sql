@@ -12,3 +12,6 @@ create table if not exists tb_pessoa (
 	constraint pk_pessoa primary key (codigo),
 	constraint fk_tipo_pessoa foreign key (id_tipo_pessoa) references tb_tipo_pessoa (codigo)
 );
+
+insert into tb_tipo_pessoa (descricao, sigla) values ('Pessoa Física', 'PF');
+insert into tb_tipo_pessoa (descricao, sigla) values ('Pessoa Jurídica', 'PJ');

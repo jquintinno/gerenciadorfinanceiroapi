@@ -1,26 +1,19 @@
 package br.com.quintinno.gerenciadorfinanceiroapi.domain;
 
+import jakarta.persistence.*;
+
+import java.io.Serial;
 import java.io.Serializable;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
-
 @Entity
-@Table(name = "TB_PESSOA")
+@Table(name = "TB_PESSOA", schema = "public")
 public class PessoaDomain implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name = "SQ_PESSOA", sequenceName = "SQ_PESSOA", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CODIGO", nullable = false)
 	private Long codigo;
 	
@@ -47,6 +40,14 @@ public class PessoaDomain implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public TipoPessoaDomain getTipoPessoaDomain() {
+		return tipoPessoaDomain;
+	}
+
+	public void setTipoPessoaDomain(TipoPessoaDomain tipoPessoaDomain) {
+		this.tipoPessoaDomain = tipoPessoaDomain;
 	}
 
 }
