@@ -19,4 +19,4 @@
 >> Feature: Implementar Modelagem de Dados Funcionalidade Gerenciador de Pessoas do Sistema (GERPESSIS)
 
 > GERFIN17072023191035
->> Feature: Implementar Modelagem de Dados Funcionalidade Gerenciador de Transaçãoes Financeiras (GERTRAFIN)
+>> Feature: Implementar Modelagem de Dados Funcionalidade Gerenciador de Transações Financeiras (GERTRAFIN)
