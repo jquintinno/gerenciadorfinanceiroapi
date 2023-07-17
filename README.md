@@ -23,3 +23,6 @@
 
 > GERFIN17072023192747
 >> Feature: Implementar endpoint das classes de Domínio
+
+> GERFIN17072023204203
+>> Feature: Implementar modelagem da Funcionalidade Gerenciador de Contas Bancárias (GERCONBAN)
