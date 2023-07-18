@@ -31,3 +31,4 @@
 
 > GERFIN18072023124331
 >> Feature: Implementar modelagem da Funcionalidade Gerenciador de Produtos e Serviços (GERPROSER)
+>> Feature: Implementar endpoints da Funcionalidade Gerenciador de Produtos e Serviços (GERPROSER)
