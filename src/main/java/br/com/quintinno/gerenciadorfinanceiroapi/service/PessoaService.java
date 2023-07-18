@@ -1,13 +1,14 @@
 package br.com.quintinno.gerenciadorfinanceiroapi.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.PessoaDomain;
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TipoPessoaDomain;
 import br.com.quintinno.gerenciadorfinanceiroapi.repository.PessoaRepository;
 import br.com.quintinno.gerenciadorfinanceiroapi.repository.TipoPessoaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PessoaService {
