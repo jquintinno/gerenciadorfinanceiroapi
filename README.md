@@ -42,3 +42,6 @@
 
 > GERFIN18072023145634
 >> Feature: Implementar modelagem da Funcionalidade Gerenciador de Pagamento e Forma de Pagamento (GERFORPAG)
+
+> GERFIN18072023151905
+>> Feature: Implementar regras negociais da Funcionalidade Gerenciador de Transações Financeiras (GERTRAFIN)
