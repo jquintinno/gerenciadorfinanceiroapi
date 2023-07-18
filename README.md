@@ -39,3 +39,6 @@
 
 > GERFIN18072023144458
 >> Feature: Implementar modelagem da Funcionalidade Gerenciador de Parcelamento (GERPARCEL)
+
+> GERFIN18072023145634
+>> Feature: Implementar modelagem da Funcionalidade Gerenciador de Pagamento e Forma de Pagamento (GERFORPAG)
