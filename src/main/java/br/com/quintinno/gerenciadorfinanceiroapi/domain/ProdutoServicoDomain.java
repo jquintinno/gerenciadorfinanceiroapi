@@ -1,17 +1,12 @@
 package br.com.quintinno.gerenciadorfinanceiroapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(schema = "public", name = "TB_PRODUTO_SERVICO")
@@ -24,7 +19,8 @@ public class ProdutoServicoDomain implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CODIGO", nullable = false)
 	private Long codigo;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "produtoServicoDomain")
 	private Set<TransacaoFinanceiraProdutoServicoDomain> transacaoFinanceiraProdutoServicoDomainList = new HashSet<>();
 
