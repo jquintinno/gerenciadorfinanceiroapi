@@ -26,6 +26,11 @@ public class PessoaDomain implements Serializable {
 	
 	public PessoaDomain() { }
 
+	public PessoaDomain(TipoPessoaDomain tipoPessoaDomain, String nome) {
+		this.tipoPessoaDomain = tipoPessoaDomain;
+		this.nome = nome;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}

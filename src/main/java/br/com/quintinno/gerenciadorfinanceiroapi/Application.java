@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class Application {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -19,5 +19,5 @@ public class Application {
 	public String api() {
 		return "<h1>Gerenciador Financeiro - API</h1>";
 	}
-
+	
 }
