@@ -12,6 +12,10 @@
 
 > FUNC: Gerenciador de Produtos e Serviços (GERPROSER)
 
+> FUNC: Gerenciador de Parcelamento (GERPARCEL)
+
+> FUNC: Gerenciador de Pagamento e Forma de Pagamento (GERFORPAG)
+
 ## Demandas
 	
 > GERFIN17072023181442
@@ -32,3 +36,6 @@
 > GERFIN18072023124331
 >> Feature: Implementar modelagem da Funcionalidade Gerenciador de Produtos e Serviços (GERPROSER)
 >> Feature: Implementar endpoints da Funcionalidade Gerenciador de Produtos e Serviços (GERPROSER)
+
+> GERFIN18072023144458
+>> Feature: Implementar modelagem da Funcionalidade Gerenciador de Parcelamento (GERPARCEL)
