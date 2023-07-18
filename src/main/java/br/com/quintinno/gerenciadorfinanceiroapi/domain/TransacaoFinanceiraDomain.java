@@ -6,6 +6,8 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "TB_TRANSACAO_FINANCEIRA")
@@ -31,6 +33,9 @@ public class TransacaoFinanceiraDomain implements Serializable {
 	@JoinColumn(name = "ID_PESSOA_RESPONSAVEL")
 	private PessoaDomain pessoaResponsavel;
 	
+	@OneToMany(mappedBy = "transacaoFinanceiraDomain", cascade = CascadeType.ALL)
+	private Set<TransacaoFinanceiraProdutoServicoDomain> transacaoFinanceiraProdutoServicoDomainList = new HashSet<>();
+	
 	@Column(name = "IDENTIFICADOR", length = 50, nullable = false)
 	private String identificador;
 	
@@ -53,6 +58,10 @@ public class TransacaoFinanceiraDomain implements Serializable {
 	private String observacao;
 	
 	public TransacaoFinanceiraDomain() { }
+	
+	public void adicionarTransacaoFinanceiraProdutoServico(TransacaoFinanceiraProdutoServicoDomain transacaoFinanceiraProdutoServicoDomain) {
+		this.transacaoFinanceiraProdutoServicoDomainList.add(transacaoFinanceiraProdutoServicoDomain);
+	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -126,11 +135,11 @@ public class TransacaoFinanceiraDomain implements Serializable {
 		this.eRecorrente = eRecorrente;
 	}
 
-	public Boolean geteTotalmentePago() {
+	public Boolean getEtotalmentePago() {
 		return eTotalmentePago;
 	}
 
-	public void seteTotalmentePago(Boolean eTotalmentePago) {
+	public void setEtotalmentePago(Boolean eTotalmentePago) {
 		this.eTotalmentePago = eTotalmentePago;
 	}
 
@@ -140,6 +149,15 @@ public class TransacaoFinanceiraDomain implements Serializable {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+
+	public Set<TransacaoFinanceiraProdutoServicoDomain> getTransacaoFinanceiraProdutoServicoDomainList() {
+		return transacaoFinanceiraProdutoServicoDomainList;
+	}
+
+	public void setTransacaoFinanceiraProdutoServicoDomainList(
+			Set<TransacaoFinanceiraProdutoServicoDomain> transacaoFinanceiraProdutoServicoDomainList) {
+		this.transacaoFinanceiraProdutoServicoDomainList = transacaoFinanceiraProdutoServicoDomainList;
 	}
 
 }

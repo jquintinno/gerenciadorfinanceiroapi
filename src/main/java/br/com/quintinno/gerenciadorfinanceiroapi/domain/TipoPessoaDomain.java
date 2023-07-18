@@ -27,6 +27,10 @@ public class TipoPessoaDomain implements Serializable {
 	
 	public TipoPessoaDomain() { }
 
+	public TipoPessoaDomain(Long codigo) {
+		this.codigo = codigo;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}

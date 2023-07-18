@@ -10,6 +10,8 @@
 
 > FUNC: Gerenciador de Contas Bancárias (GERCONBAN)
 
+> FUNC: Gerenciador de Produtos e Serviços (GERPROSER)
+
 ## Demandas
 	
 > GERFIN17072023181442
@@ -26,3 +28,6 @@
 
 > GERFIN17072023204203
 >> Feature: Implementar modelagem da Funcionalidade Gerenciador de Contas Bancárias (GERCONBAN)
+
+> GERFIN18072023124331
+>> Feature: Implementar modelagem da Funcionalidade Gerenciador de Produtos e Serviços (GERPROSER)
