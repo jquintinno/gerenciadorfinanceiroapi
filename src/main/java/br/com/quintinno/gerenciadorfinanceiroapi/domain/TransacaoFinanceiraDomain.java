@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,6 +44,7 @@ public class TransacaoFinanceiraDomain implements Serializable {
 	@JoinColumn(name = "ID_PESSOA_RESPONSAVEL")
 	private PessoaDomain pessoaResponsavel;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "transacaoFinanceiraDomain", cascade = CascadeType.ALL)
 	private Set<TransacaoFinanceiraProdutoServicoDomain> transacaoFinanceiraProdutoServicoDomainList = new HashSet<>();
 	
@@ -58,16 +61,20 @@ public class TransacaoFinanceiraDomain implements Serializable {
 	private BigDecimal valorTotal;
 	
 	@Column(name = "E_RECORRENTE", nullable = false)
-	private Boolean eRecorrente;
+	private Boolean bolRecorrente;
 	
 	@Column(name = "E_TOTALMENTE_PAGO", nullable = false)
-	private Boolean eTotalmentePago;
+	private Boolean bolTotalmentePago;
 	
 	@Column(name = "OBSERVACAO", length = 255)
 	private String observacao;
 	
 	public TransacaoFinanceiraDomain() { }
 	
+	public TransacaoFinanceiraDomain(Long codigo) {
+		this.codigo = codigo;
+	}
+
 	public void adicionarTransacaoFinanceiraProdutoServico(TransacaoFinanceiraProdutoServicoDomain transacaoFinanceiraProdutoServicoDomain) {
 		this.transacaoFinanceiraProdutoServicoDomainList.add(transacaoFinanceiraProdutoServicoDomain);
 	}
@@ -136,20 +143,20 @@ public class TransacaoFinanceiraDomain implements Serializable {
 		this.valorTotal = valorTotal;
 	}
 
-	public Boolean geteRecorrente() {
-		return eRecorrente;
+	public Boolean getBolRecorrente() {
+		return bolRecorrente;
 	}
 
-	public void seteRecorrente(Boolean eRecorrente) {
-		this.eRecorrente = eRecorrente;
+	public void setBolRecorrente(Boolean bolRecorrente) {
+		this.bolRecorrente = bolRecorrente;
 	}
 
-	public Boolean getEtotalmentePago() {
-		return eTotalmentePago;
+	public Boolean getBolTotalmentePago() {
+		return bolTotalmentePago;
 	}
 
-	public void setEtotalmentePago(Boolean eTotalmentePago) {
-		this.eTotalmentePago = eTotalmentePago;
+	public void setBolTotalmentePago(Boolean bolTotalmentePago) {
+		this.bolTotalmentePago = bolTotalmentePago;
 	}
 
 	public String getObservacao() {

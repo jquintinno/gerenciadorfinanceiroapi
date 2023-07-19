@@ -38,7 +38,7 @@ create table if not exists tb_transacao_financeira (
 	id_pessoa_responsavel serial not null,
 	identificador varchar(50) not null,
 	quantidade_parcela integer not null,
-	data_hora_cadastro timestamp not null, 
+	data_hora_cadastro timestamp not null default current_date, 
 	valor_total float not null,
 	e_recorrente boolean not null,
 	e_pago boolean not null,
