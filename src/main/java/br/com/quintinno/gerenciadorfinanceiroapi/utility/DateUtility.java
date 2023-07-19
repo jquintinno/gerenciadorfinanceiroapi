@@ -1,17 +1,17 @@
 package br.com.quintinno.gerenciadorfinanceiroapi.utility;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateUtility {
 	
 	public static final String FORMATO_A = "ddMMyyyy";
-	public static final String FORMATO_B = "ddMMyyyy HH:mm:ss";
+	public static final String FORMATO_B = "ddMMyyyyHHmmss";
 	
 	public static String recuperarDataAtual(String formato) {
-		LocalDate localDate = LocalDate.now();
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(FORMATO_A);
-		return localDate.format(dateTimeFormatter);
+		LocalDateTime localDateTime = LocalDateTime.now();
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(FORMATO_B);
+		return localDateTime.format(dateTimeFormatter);
 	}
 
 }

@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -54,6 +56,7 @@ public class TransacaoFinanceiraDomain implements Serializable {
 	@Column(name = "QUANTIDADE_PARCELA", nullable = false)
 	private Integer quantidadeParcela;
 	
+	@CreationTimestamp
 	@Column(name = "DATA_HORA_CADASTRO", nullable = false)
 	private LocalDateTime dataHoraCadastro;
 	

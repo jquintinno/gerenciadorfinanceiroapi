@@ -43,8 +43,8 @@ class ApplicationTests {
 		
 		TransacaoFinanceiraDomain transacaoFinanceiraDomain1 = new TransacaoFinanceiraDomain();
 			transacaoFinanceiraDomain1.setDataHoraCadastro(LocalDateTime.now());
-			transacaoFinanceiraDomain1.seteRecorrente(false);
-			transacaoFinanceiraDomain1.setEtotalmentePago(true);
+			transacaoFinanceiraDomain1.setBolRecorrente(false);
+			transacaoFinanceiraDomain1.setBolTotalmentePago(true);
 			transacaoFinanceiraDomain1.setIdentificador("TRANSACAO_FINANCEIRA_001");
 			transacaoFinanceiraDomain1.setObservacao(null);
 			transacaoFinanceiraDomain1.setPessoaResponsavel(pessoaDomain1);

@@ -1,6 +1,5 @@
 package br.com.quintinno.gerenciadorfinanceiroapi.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +21,13 @@ public class TransacaoFinanceiraService {
 	@Autowired
 	private TipoTransacaoFinanceiraRepository tipoTransacaoFinanceiraRepository;
 	
+	private static final String PREFIXO = "TRANSACAOFINANCEIRA";
+	
+	@SuppressWarnings("unused")
 	@Autowired
 	private TipoTransacaoFinanceiraImplementationRepository transacaoFinanceiraImplementationRepository;
 	
 	public TransacaoFinanceiraDomain createOne(TransacaoFinanceiraDomain transacaoFinanceiraDomain) {
-			transacaoFinanceiraDomain.setDataHoraCadastro(LocalDateTime.now());
 			transacaoFinanceiraDomain.setIdentificador(this.gerarIdentificador());
 		return this.transacaoFinanceiraRepository.save(transacaoFinanceiraDomain);
 	}
@@ -45,19 +46,13 @@ public class TransacaoFinanceiraService {
 	
 	/**
 	 * Regra: Deve ser gerado da seguinte forma: 
-	 * 	TRAFIN+{DATA_TRANSACAO}+{CODIGO_TRANSACAO_DIARIO}
-	 * Exeplo: TRANSACAOFINANCEIRA0004190720230001
+	 * 	TRAFIN<AAAAMMDDHHMMSS>
+	 * Exemplo: TRANSACAOFINANCEIRA419072023191808
 	 * @param codigoTransacaoFinanceira
 	 * @return
 	 */
 	private String gerarIdentificador() {
-		Long codigoTransacaoFinanceira = this.transacaoFinanceiraImplementationRepository.recuperarUltimoTransacaoDiaria();
-		String dataAtual = DateUtility.recuperarDataAtual(DateUtility.FORMATO_A);
-		if (Long.valueOf(codigoTransacaoFinanceira) < 9) {
-			return "TRAFIN".concat(dataAtual).concat("000").concat(String.valueOf(codigoTransacaoFinanceira+1));
-		} else {
-			return "TRANSACAOFINANCEIRA".concat(dataAtual).concat("00").concat(String.valueOf(codigoTransacaoFinanceira+1));
-		}
+		return PREFIXO.concat(DateUtility.recuperarDataAtual(DateUtility.FORMATO_B));
 	}
 	
 }
