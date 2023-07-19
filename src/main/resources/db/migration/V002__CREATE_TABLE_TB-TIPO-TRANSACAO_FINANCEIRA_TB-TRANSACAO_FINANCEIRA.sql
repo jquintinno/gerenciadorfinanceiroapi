@@ -12,7 +12,7 @@ create table if not exists tb_transacao_financeira (
 	identificador varchar(50) not null,
 	quantidade_parcela integer not null,
 	data_hora_cadastro timestamp not null, 
-	valor_total money not null,
+	valor_total float not null,
 	e_recorrente boolean not null,
 	e_totalmente_pago boolean not null,
 	observacao varchar(255),

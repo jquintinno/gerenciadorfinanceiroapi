@@ -1,15 +1,21 @@
 package br.com.quintinno.gerenciadorfinanceiroapi;
 
-import br.com.quintinno.gerenciadorfinanceiroapi.domain.*;
-import br.com.quintinno.gerenciadorfinanceiroapi.repository.PessoaRepository;
-import br.com.quintinno.gerenciadorfinanceiroapi.repository.TipoTransacaoFinanceiraRepository;
-import br.com.quintinno.gerenciadorfinanceiroapi.repository.TransacaoFinanceiraRepository;
-import org.assertj.core.api.Assertions;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+
+import org.assertj.core.api.Assertions;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.quintinno.gerenciadorfinanceiroapi.domain.PessoaDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.domain.ProdutoServicoDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.domain.TipoPessoaDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.domain.TipoTransacaoFinanceiraDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.domain.TransacaoFinanceiraDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.domain.TransacaoFinanceiraProdutoServicoDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.repository.PessoaRepository;
+import br.com.quintinno.gerenciadorfinanceiroapi.repository.TipoTransacaoFinanceiraRepository;
+import br.com.quintinno.gerenciadorfinanceiroapi.repository.TransacaoFinanceiraRepository;
 
 class ApplicationTests { 
 	

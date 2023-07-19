@@ -3,6 +3,8 @@ package br.com.quintinno.gerenciadorfinanceiroapi.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,6 +34,7 @@ public class TransacaoFinanceiraProdutoServicoDomain implements Serializable {
 	@JoinColumn(name = "ID_PRODUTO_SERVICO")
 	private ProdutoServicoDomain produtoServicoDomain;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	@Column(name = "VALOR", length = 50, nullable = false)
 	private BigDecimal valor;
 	
