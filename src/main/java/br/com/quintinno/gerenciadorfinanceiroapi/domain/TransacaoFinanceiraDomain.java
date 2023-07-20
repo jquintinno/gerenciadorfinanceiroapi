@@ -66,9 +66,6 @@ public class TransacaoFinanceiraDomain implements Serializable {
 	@Column(name = "DIA_VENCIMENTO")
 	private Integer diaVencimento;
 	
-	@Column(name = "E_RECORRENTE", nullable = false)
-	private Boolean bolRecorrente;
-	
 	@Column(name = "E_TOTALMENTE_PAGO", nullable = false)
 	private Boolean bolTotalmentePago;
 	
@@ -147,14 +144,6 @@ public class TransacaoFinanceiraDomain implements Serializable {
 
 	public void setDiaVencimento(Integer diaVencimento) {
 		this.diaVencimento = diaVencimento;
-	}
-
-	public Boolean getBolRecorrente() {
-		return bolRecorrente;
-	}
-
-	public void setBolRecorrente(Boolean bolRecorrente) {
-		this.bolRecorrente = bolRecorrente;
 	}
 
 	public Boolean getBolTotalmentePago() {

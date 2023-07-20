@@ -67,8 +67,18 @@ public class TransacaoFinanceiraService {
 		return PREFIXO.concat(DateUtility.recuperarDataAtual(DateUtility.FORMATO_B));
 	}
 	
+	// TODO -- Corrigir: Passar Regra Negocial para a classe ParcelamentoService 
 	private void gerarParcelamentoTransacaoFinanceira(TransacaoFinanceiraDomain transacaoFinanceiraDomain) {
-		for(int index = 1 ; index <= transacaoFinanceiraDomain.getQuantidadeParcela() ; index++) {
+//		if (transacaoFinanceiraDomain.getTipoTransacaoFinanceiraDomain().getCodigo() == TipoTransacaoFinanceiraEnumeration.DESPESA_VARIAVEL.getCodigo() 
+//				&& transacaoFinanceiraDomain.getQuantidadeParcela() == 1) {
+			controleParcelamento(transacaoFinanceiraDomain, 1);
+//		} else {
+//			controleParcelamento(transacaoFinanceiraDomain, 1);
+//		}
+	}
+
+	private void controleParcelamento(TransacaoFinanceiraDomain transacaoFinanceiraDomain, int numeroControle) {
+		for(int index = numeroControle ; index <= transacaoFinanceiraDomain.getQuantidadeParcela() ; index++) {
 			this.parcelamentoService.gerarParcelamentoTransacaoFinanceira(transacaoFinanceiraDomain, index);
 		}
 	}

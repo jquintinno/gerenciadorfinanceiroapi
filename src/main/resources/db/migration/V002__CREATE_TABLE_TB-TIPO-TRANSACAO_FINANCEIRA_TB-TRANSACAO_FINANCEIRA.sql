@@ -14,7 +14,6 @@ create table if not exists tb_transacao_financeira (
 	data_hora_cadastro timestamp not null,
 	valor_unitario decimal(9,2) not null, 
 	dia_vencimento integer null,
-	e_recorrente boolean not null,
 	e_totalmente_pago boolean not null,
 	observacao varchar(255),
 	constraint pk_transacao_financeira primary key (codigo),
@@ -28,5 +27,6 @@ insert into tb_tipo_transacao_financeira (descricao) values ('Receita Variável'
 insert into tb_tipo_transacao_financeira (descricao) values ('Despesa Fixa');
 insert into tb_tipo_transacao_financeira (descricao) values ('Despesa Variável');
 insert into tb_tipo_transacao_financeira (descricao) values ('Concessão de Empréstimo (Pessoa Física)');
+insert into tb_tipo_transacao_financeira (descricao) values ('Concessão de Empréstimo (Pessoa Jurídica)');
 insert into tb_tipo_transacao_financeira (descricao) values ('Adquirição de Empréstimo (Pessoa Física)');
 insert into tb_tipo_transacao_financeira (descricao) values ('Adquirição de Empréstimo (Pessoa Jurídica)');
