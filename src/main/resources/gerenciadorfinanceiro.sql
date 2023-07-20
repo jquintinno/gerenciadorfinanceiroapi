@@ -1,3 +1,4 @@
+drop table if exists flyway_schema_history cascade;
 drop table if exists tb_tipo_pessoa cascade;
 drop table if exists tb_pessoa cascade;
 drop table if exists tb_tipo_transacao_financeira cascade;

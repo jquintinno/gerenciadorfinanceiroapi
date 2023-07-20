@@ -60,8 +60,11 @@ public class TransacaoFinanceiraDomain implements Serializable {
 	@Column(name = "DATA_HORA_CADASTRO", nullable = false)
 	private LocalDateTime dataHoraCadastro;
 	
-	@Column(name = "VALOR_TOTAL", nullable = false)
-	private BigDecimal valorTotal;
+	@Column(name = "VALOR_UNITARIO", scale = 9, precision = 2, nullable = false)
+	private BigDecimal valorUnitario;
+	
+	@Column(name = "DIA_VENCIMENTO")
+	private Integer diaVencimento;
 	
 	@Column(name = "E_RECORRENTE", nullable = false)
 	private Boolean bolRecorrente;
@@ -138,12 +141,12 @@ public class TransacaoFinanceiraDomain implements Serializable {
 		this.dataHoraCadastro = dataHoraCadastro;
 	}
 
-	public BigDecimal getValorTotal() {
-		return valorTotal;
+	public Integer getDiaVencimento() {
+		return diaVencimento;
 	}
 
-	public void setValorTotal(BigDecimal valorTotal) {
-		this.valorTotal = valorTotal;
+	public void setDiaVencimento(Integer diaVencimento) {
+		this.diaVencimento = diaVencimento;
 	}
 
 	public Boolean getBolRecorrente() {
@@ -177,6 +180,14 @@ public class TransacaoFinanceiraDomain implements Serializable {
 	public void setTransacaoFinanceiraProdutoServicoDomainList(
 			Set<TransacaoFinanceiraProdutoServicoDomain> transacaoFinanceiraProdutoServicoDomainList) {
 		this.transacaoFinanceiraProdutoServicoDomainList = transacaoFinanceiraProdutoServicoDomainList;
+	}
+
+	public BigDecimal getValorUnitario() {
+		return valorUnitario;
+	}
+
+	public void setValorUnitario(BigDecimal valorUnitario) {
+		this.valorUnitario = valorUnitario;
 	}
 
 }

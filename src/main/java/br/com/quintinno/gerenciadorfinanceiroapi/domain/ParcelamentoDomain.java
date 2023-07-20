@@ -1,11 +1,18 @@
 package br.com.quintinno.gerenciadorfinanceiroapi.domain;
 
-import jakarta.persistence.*;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "TB_PARCELAMENTO", schema = "public")
@@ -23,13 +30,13 @@ public class ParcelamentoDomain implements Serializable {
 	private String identificador;
 
 	@Column(name = "NUMERO", nullable = false)
-	private String numero;
+	private Integer numero;
 
 	@Column(name = "VALOR", nullable = false)
 	private BigDecimal valor;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "DATA_VENCIMENTO", nullable = false)
+	@Column(name = "DATA_VENCIMENTO")
 	private LocalDate dataVencimento;
 
 	@Temporal(TemporalType.DATE)
@@ -37,6 +44,14 @@ public class ParcelamentoDomain implements Serializable {
 	private LocalDate dataPagamento;
 
 	public ParcelamentoDomain() { }
+
+	public ParcelamentoDomain(String identificador, Integer numero, BigDecimal valor, LocalDate dataVencimento, LocalDate dataPagamento) {
+		this.identificador = identificador;
+		this.numero = numero;
+		this.valor = valor;
+		this.dataVencimento = dataVencimento;
+		this.dataPagamento = dataPagamento;
+	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -54,11 +69,11 @@ public class ParcelamentoDomain implements Serializable {
 		this.identificador = identificador;
 	}
 
-	public String getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(String numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
