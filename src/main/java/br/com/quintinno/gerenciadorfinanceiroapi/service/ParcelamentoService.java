@@ -23,6 +23,7 @@ public class ParcelamentoService {
 	@Transactional
 	public void gerarParcelamentoTransacaoFinanceira(TransacaoFinanceiraDomain transacaoFinanceiraDomain, Integer numeroParcela) {
 		ParcelamentoDomain parcelamentoDomain = new ParcelamentoDomain();
+			parcelamentoDomain.setTransacaoFinanceiraDomain(transacaoFinanceiraDomain);
 			parcelamentoDomain.setIdentificador(this.gerarIdentificador());
 			parcelamentoDomain.setNumero(numeroParcela);
 			parcelamentoDomain.setValor(transacaoFinanceiraDomain.getValorUnitario());

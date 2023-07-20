@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -25,6 +27,10 @@ public class ParcelamentoDomain implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CODIGO", nullable = false)
 	private Long codigo;
+	
+	@OneToOne
+	@JoinColumn(name = "ID_TRANSACAO_FINANCEIRA")
+	private TransacaoFinanceiraDomain transacaoFinanceiraDomain;
 
 	@Column(name = "IDENTIFICADOR", nullable = false)
 	private String identificador;
@@ -99,6 +105,14 @@ public class ParcelamentoDomain implements Serializable {
 
 	public void setDataPagamento(LocalDate dataPagamento) {
 		this.dataPagamento = dataPagamento;
+	}
+
+	public TransacaoFinanceiraDomain getTransacaoFinanceiraDomain() {
+		return transacaoFinanceiraDomain;
+	}
+
+	public void setTransacaoFinanceiraDomain(TransacaoFinanceiraDomain transacaoFinanceiraDomain) {
+		this.transacaoFinanceiraDomain = transacaoFinanceiraDomain;
 	}
 
 }

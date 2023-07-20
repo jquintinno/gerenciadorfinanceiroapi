@@ -33,7 +33,10 @@ public class TransacaoFinanceiraService {
 	
 	@Transactional
 	public TransacaoFinanceiraDomain createOne(TransacaoFinanceiraDomain transacaoFinanceiraDomain) {
-		return this.transacaoFinanceiraRepository.save(this.configurarTransacaoFinanceira(transacaoFinanceiraDomain));
+		TransacaoFinanceiraDomain transacaoFinanceiraDomainPersist = this.configurarTransacaoFinanceira(transacaoFinanceiraDomain);
+			this.transacaoFinanceiraRepository.save(transacaoFinanceiraDomainPersist);
+			this.gerarParcelamentoTransacaoFinanceira(transacaoFinanceiraDomainPersist);
+		return transacaoFinanceiraDomainPersist;
 	}
 
 	public List<TransacaoFinanceiraDomain> searchAll() {
@@ -50,9 +53,6 @@ public class TransacaoFinanceiraService {
 	
 	private TransacaoFinanceiraDomain configurarTransacaoFinanceira(TransacaoFinanceiraDomain transacaoFinanceiraDomain) {
 		transacaoFinanceiraDomain.setIdentificador(this.gerarIdentificador());
-		for(int index = 1 ; index <= transacaoFinanceiraDomain.getQuantidadeParcela() ; index++) {
-			this.parcelamentoService.gerarParcelamentoTransacaoFinanceira(transacaoFinanceiraDomain, index);
-		}
 		return transacaoFinanceiraDomain;
 	}
 	
@@ -65,6 +65,12 @@ public class TransacaoFinanceiraService {
 	 */
 	private String gerarIdentificador() {
 		return PREFIXO.concat(DateUtility.recuperarDataAtual(DateUtility.FORMATO_B));
+	}
+	
+	private void gerarParcelamentoTransacaoFinanceira(TransacaoFinanceiraDomain transacaoFinanceiraDomain) {
+		for(int index = 1 ; index <= transacaoFinanceiraDomain.getQuantidadeParcela() ; index++) {
+			this.parcelamentoService.gerarParcelamentoTransacaoFinanceira(transacaoFinanceiraDomain, index);
+		}
 	}
 	
 }
