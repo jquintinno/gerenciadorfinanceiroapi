@@ -45,8 +45,11 @@
 
 > GERFIN18072023151905
 >> Feature: Implementar Regras Negociais da Funcionalidade Gerenciador de Transações Financeiras (GERTRAFIN)
->>> Criar DTO para retorno de dados
 
->>> Criar Parcelamento ao cadastrar Transações Financeiras
+>>> - Criar Parcelamento ao cadastrar Transações Financeiras
+
+>>> - Criar DTO para retorno de dados
+
+>>> - Alterar modelagem das tabelas TB_TRANSACAO_FINANCEIRA com TB_PARCELAMENTO
 
 
