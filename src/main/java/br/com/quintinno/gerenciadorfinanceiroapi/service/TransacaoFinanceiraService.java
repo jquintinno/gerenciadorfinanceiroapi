@@ -7,9 +7,13 @@ import org.springframework.stereotype.Service;
 
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TipoTransacaoFinanceiraDomain;
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TransacaoFinanceiraDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.domain.TransacaoFinanceiraProdutoServicoDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.dto.TransacaoFinanceiraProdutoServicoRequestDTO;
 import br.com.quintinno.gerenciadorfinanceiroapi.dto.TransacaoFinanceiraRequestDTO;
+import br.com.quintinno.gerenciadorfinanceiroapi.repository.ProdutoServicoRepository;
 import br.com.quintinno.gerenciadorfinanceiroapi.repository.TipoTransacaoFinanceiraImplementationRepository;
 import br.com.quintinno.gerenciadorfinanceiroapi.repository.TipoTransacaoFinanceiraRepository;
+import br.com.quintinno.gerenciadorfinanceiroapi.repository.TransacaoFinanceiraProdutoServicoRepository;
 import br.com.quintinno.gerenciadorfinanceiroapi.repository.TransacaoFinanceiraRepository;
 import br.com.quintinno.gerenciadorfinanceiroapi.utility.DateUtility;
 import jakarta.transaction.Transactional;
@@ -25,6 +29,12 @@ public class TransacaoFinanceiraService {
 	
 	@Autowired
 	private ParcelamentoService parcelamentoService;
+	
+	@Autowired
+	private TransacaoFinanceiraProdutoServicoRepository transacaoFinanceiraProdutoServicoRepository;
+	
+	@Autowired
+	private ProdutoServicoRepository produtoServicoRepository;
 	
 	private static final String PREFIXO = "TRANSACAOFINANCEIRA";
 	
@@ -93,6 +103,18 @@ public class TransacaoFinanceiraService {
 		for(int index = numeroControle ; index <= transacaoFinanceiraDomain.getQuantidadeParcela() ; index++) {
 			this.parcelamentoService.gerarParcelamentoTransacaoFinanceira(transacaoFinanceiraDomain, index);
 		}
+	}
+	
+	public TransacaoFinanceiraProdutoServicoDomain vincularProdutoServicoTransacaoFinanceira(TransacaoFinanceiraProdutoServicoRequestDTO transacaoFinanceiraProdutoServicoRequestDTO) {
+		TransacaoFinanceiraProdutoServicoDomain transacaoFinanceiraProdutoServicoDomain = new TransacaoFinanceiraProdutoServicoDomain();
+		for (TransacaoFinanceiraProdutoServicoDomain object : transacaoFinanceiraProdutoServicoRequestDTO.getTransacaoFinanceiraProdutoServicoDomainList()) {
+				transacaoFinanceiraProdutoServicoDomain = new TransacaoFinanceiraProdutoServicoDomain();
+				transacaoFinanceiraProdutoServicoDomain.setTransacaoFinanceiraDomain(this.transacaoFinanceiraRepository.findById(object.getTransacaoFinanceiraDomain().getCodigo()).orElseThrow());
+				transacaoFinanceiraProdutoServicoDomain.setProdutoServicoDomain(this.produtoServicoRepository.findById(object.getProdutoServicoDomain().getCodigo()).orElseThrow());
+				transacaoFinanceiraProdutoServicoDomain.setValor(object.getValor());
+			this.transacaoFinanceiraProdutoServicoRepository.save(transacaoFinanceiraProdutoServicoDomain);
+		}
+		return transacaoFinanceiraProdutoServicoDomain;
 	}
 	
 }

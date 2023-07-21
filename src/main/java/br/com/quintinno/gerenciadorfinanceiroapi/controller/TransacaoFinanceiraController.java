@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TipoTransacaoFinanceiraDomain;
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TransacaoFinanceiraDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.domain.TransacaoFinanceiraProdutoServicoDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.dto.TransacaoFinanceiraProdutoServicoRequestDTO;
 import br.com.quintinno.gerenciadorfinanceiroapi.dto.TransacaoFinanceiraRequestDTO;
 import br.com.quintinno.gerenciadorfinanceiroapi.service.TransacaoFinanceiraService;
 
@@ -40,6 +42,11 @@ public class TransacaoFinanceiraController {
 	@GetMapping("/{codigoTransacaoFinanceira}")
 	public TransacaoFinanceiraDomain searchOne(@PathVariable("codigoTransacaoFinanceira") Long codigoTransacaoFinanceira) {
 		return this.transacaoFinanceiraService.searchOne(codigoTransacaoFinanceira);
+	}
+	
+	@PostMapping("/vincular-produto-servico")
+	private TransacaoFinanceiraProdutoServicoDomain vincularProdutoServicoTransacaoFinanceira(@RequestBody TransacaoFinanceiraProdutoServicoRequestDTO transacaoFinanceiraProdutoServicoRequestDTO) {
+		return this.transacaoFinanceiraService.vincularProdutoServicoTransacaoFinanceira(transacaoFinanceiraProdutoServicoRequestDTO);
 	}
 
 }
