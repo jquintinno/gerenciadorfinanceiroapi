@@ -33,7 +33,7 @@ public class PagamentoDomain implements Serializable {
 	private ContaBancariaDomain contaBancariaDomain;
 
 	@ManyToOne
-	@JoinColumn(name = "ID_FORMA_PARCELAMENTO")
+	@JoinColumn(name = "ID_FORMA_PAGAMENTO")
 	private FormaPagamentoDomain formaPagamentoDomain;
 
 	public PagamentoDomain() { }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TipoTransacaoFinanceiraDomain;
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TransacaoFinanceiraDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.dto.TransacaoFinanceiraRequestDTO;
 import br.com.quintinno.gerenciadorfinanceiroapi.repository.TipoTransacaoFinanceiraImplementationRepository;
 import br.com.quintinno.gerenciadorfinanceiroapi.repository.TipoTransacaoFinanceiraRepository;
 import br.com.quintinno.gerenciadorfinanceiroapi.repository.TransacaoFinanceiraRepository;
@@ -32,8 +33,8 @@ public class TransacaoFinanceiraService {
 	private TipoTransacaoFinanceiraImplementationRepository transacaoFinanceiraImplementationRepository;
 	
 	@Transactional
-	public TransacaoFinanceiraDomain createOne(TransacaoFinanceiraDomain transacaoFinanceiraDomain) {
-		TransacaoFinanceiraDomain transacaoFinanceiraDomainPersist = this.configurarTransacaoFinanceira(transacaoFinanceiraDomain);
+	public TransacaoFinanceiraDomain createOne(TransacaoFinanceiraRequestDTO transacaoFinanceiraRequestDTO) {
+		TransacaoFinanceiraDomain transacaoFinanceiraDomainPersist = this.configurarTransacaoFinanceira(transacaoFinanceiraRequestDTO);
 			this.transacaoFinanceiraRepository.save(transacaoFinanceiraDomainPersist);
 			this.gerarParcelamentoTransacaoFinanceira(transacaoFinanceiraDomainPersist);
 		return transacaoFinanceiraDomainPersist;
@@ -51,8 +52,19 @@ public class TransacaoFinanceiraService {
 		return this.transacaoFinanceiraRepository.findById(codigoTransacaoFinanceira).orElse(null);
 	}
 	
-	private TransacaoFinanceiraDomain configurarTransacaoFinanceira(TransacaoFinanceiraDomain transacaoFinanceiraDomain) {
-		transacaoFinanceiraDomain.setIdentificador(this.gerarIdentificador());
+	private TransacaoFinanceiraDomain configurarTransacaoFinanceira(TransacaoFinanceiraRequestDTO transacaoFinanceiraRequestDTO) {
+		TransacaoFinanceiraDomain transacaoFinanceiraDomain = new TransacaoFinanceiraDomain();
+			transacaoFinanceiraDomain.setBolTotalmentePago(transacaoFinanceiraRequestDTO.getBolTotalmentePago());
+			transacaoFinanceiraDomain.setDataHoraCadastro(transacaoFinanceiraRequestDTO.getDataHoraCadastro());
+			transacaoFinanceiraDomain.setDiaVencimento(transacaoFinanceiraRequestDTO.getDiaVencimento());
+			transacaoFinanceiraDomain.setIdentificador(this.gerarIdentificador());
+			transacaoFinanceiraDomain.setObservacao(transacaoFinanceiraRequestDTO.getObservacao());
+			transacaoFinanceiraDomain.setPessoaResponsavel(transacaoFinanceiraRequestDTO.getPessoaResponsavel());
+			transacaoFinanceiraDomain.setPessoaTransacaoFinanceira(transacaoFinanceiraRequestDTO.getPessoaTransacaoFinanceira());
+			transacaoFinanceiraDomain.setQuantidadeParcela(transacaoFinanceiraRequestDTO.getQuantidadeParcela());
+			transacaoFinanceiraDomain.setTipoTransacaoFinanceiraDomain(transacaoFinanceiraRequestDTO.getTipoTransacaoFinanceiraDomain());
+			transacaoFinanceiraDomain.setTransacaoFinanceiraProdutoServicoDomainList(transacaoFinanceiraRequestDTO.getTransacaoFinanceiraProdutoServicoDomainList());
+			transacaoFinanceiraDomain.setValorUnitario(transacaoFinanceiraRequestDTO.getValorUnitario());
 		return transacaoFinanceiraDomain;
 	}
 	

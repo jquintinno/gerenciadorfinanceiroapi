@@ -41,5 +41,13 @@ public class ParcelamentoService {
 	private LocalDate gerarDataVencimento(Integer diaVencimento, LocalDateTime dataHoraCadastro, int index, Boolean bolMesAtual) {
 		return bolMesAtual ? dataHoraCadastro.toLocalDate() : dataHoraCadastro.toLocalDate().plusMonths(index);
 	}
+	
+	public ParcelamentoDomain searchOne(Long codigoParcelamento) {
+		return this.parcelamentoRepository.findById(codigoParcelamento).orElseThrow();
+	}
+	
+	public ParcelamentoDomain updateOne(ParcelamentoDomain parcelamentoDomain) {
+		return this.parcelamentoRepository.save(parcelamentoDomain);
+	}
 
 }

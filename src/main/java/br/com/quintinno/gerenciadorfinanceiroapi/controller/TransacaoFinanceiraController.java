@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TipoTransacaoFinanceiraDomain;
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TransacaoFinanceiraDomain;
+import br.com.quintinno.gerenciadorfinanceiroapi.dto.TransacaoFinanceiraRequestDTO;
 import br.com.quintinno.gerenciadorfinanceiroapi.service.TransacaoFinanceiraService;
 
 @RestController
@@ -22,8 +23,8 @@ public class TransacaoFinanceiraController {
 	private TransacaoFinanceiraService transacaoFinanceiraService;
 	
 	@PostMapping
-	private TransacaoFinanceiraDomain createOne(@RequestBody TransacaoFinanceiraDomain transacaoFinanceiraDomain) {
-		return this.transacaoFinanceiraService.createOne(transacaoFinanceiraDomain);
+	private TransacaoFinanceiraDomain createOne(@RequestBody TransacaoFinanceiraRequestDTO transacaoFinanceiraRequestDTO) {
+		return this.transacaoFinanceiraService.createOne(transacaoFinanceiraRequestDTO);
 	}
 	
 	@GetMapping
