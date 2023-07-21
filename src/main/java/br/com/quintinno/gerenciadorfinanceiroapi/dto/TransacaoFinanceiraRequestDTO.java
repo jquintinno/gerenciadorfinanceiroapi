@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.PessoaDomain;
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TipoTransacaoFinanceiraDomain;
 import br.com.quintinno.gerenciadorfinanceiroapi.domain.TransacaoFinanceiraProdutoServicoDomain;
@@ -26,7 +24,6 @@ public class TransacaoFinanceiraRequestDTO implements Serializable {
 	
 	private PessoaDomain pessoaResponsavel;
 	
-	@JsonIgnore
 	private Set<TransacaoFinanceiraProdutoServicoDomain> transacaoFinanceiraProdutoServicoDomainList = new HashSet<>();
 	
 	private String identificador;

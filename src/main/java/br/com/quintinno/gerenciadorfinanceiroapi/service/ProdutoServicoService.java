@@ -22,4 +22,8 @@ public class ProdutoServicoService {
 		return this.produtoServicoRepository.findAll();
 	}
 	
+	public ProdutoServicoDomain searchOne(Long codigoProdutoServico) {
+		return this.produtoServicoRepository.findById(codigoProdutoServico).orElseThrow();
+	}
+	
 }
